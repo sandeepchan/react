@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 // import Radium, {StyleRoot} from 'radium';
-import './App.css';
+import Classes from './App.css';
 import Person from './Person/Person';
 class  App extends Component
 {
@@ -84,18 +84,19 @@ deletePerson=(personIndex)=>
   
   render()
   {
-    const style= {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
+    // const style= {
+    //   backgroundColor: 'green',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
       // ':hover':
       // {
       //   backgroundColor: 'pink',
       //   color: 'black'
       // }
-    }
+    // }
+    let btnClass= ' ';
     let persons = null;
     if(this.state.showPersons)
     {
@@ -113,12 +114,13 @@ deletePerson=(personIndex)=>
 
         </div>
       );
-        style.backgroundColor= 'red';
+        // style.backgroundColor= 'red';
         // style[':hover']=
         // {
         //   backgroundColor: 'purple',
         //   color: 'black'
         // }
+        btnClass= Classes.Red;
         }
         const classes= [];
         if(this.state.persons.length <= 2)
@@ -127,11 +129,14 @@ deletePerson=(personIndex)=>
         } 
         if(this.state.persons.length <= 1)
         {
-                classes.push('bold')
+                // classes.push('bold')
+                classes.push(Classes.red)
         } 
         if(this.state.persons.length < 1)
         {
-                classes.push('green')
+                // classes.push('green')
+                
+                classes.push(Classes.bold)
         } 
         // <div>
         // <Person name={this.state.persons[0].name} age= {this.state.persons[0].age} />
@@ -144,13 +149,14 @@ deletePerson=(personIndex)=>
     // }
     return(
     
-          <div className="App">
+          
+          <div className= {Classes.App}>
           <h1>Hi, I'm a React App</h1>
           <p className= {classes.join(' ')}>This is really working!</p>
           {/* <Person name="neelam" age= "24" />
           <Person name="sandeep" age= "23" >my Hobbie: playing Guitar</Person>
           <Person name="prashansa" age= "20" /> */}
-          <button style= {style}  onClick={this.toogelHandler}>Switch Name</button>
+          <button className= {btnClass} onClick={this.toogelHandler}>Switch Name</button>
           {/* <button style= {style} onClick={this.switchNameHandler.bind('this', 'Sandeep Chand')}>Switch Name</button>
           */}
           {/* <button onClick={()=> this.switchNameHandler('Sandeep Chand')}>Switch Name</button> */}

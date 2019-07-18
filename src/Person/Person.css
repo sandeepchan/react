@@ -6,3 +6,11 @@
     box-shadow: 0 20x 3px #cccccc;
     text-align: center;
 }
+@media (min-width: 500px)
+{
+    .Person
+    {
+       width: 450px;
+    }
+
+}
