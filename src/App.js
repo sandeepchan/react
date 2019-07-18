@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+// import Radium, {StyleRoot} from 'radium';
 import './App.css';
 import Person from './Person/Person';
 class  App extends Component
@@ -85,11 +85,16 @@ deletePerson=(personIndex)=>
   render()
   {
     const style= {
-      
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      // ':hover':
+      // {
+      //   backgroundColor: 'pink',
+      //   color: 'black'
+      // }
     }
     let persons = null;
     if(this.state.showPersons)
@@ -107,8 +112,27 @@ deletePerson=(personIndex)=>
           })}
 
         </div>
-      )
+      );
+        style.backgroundColor= 'red';
+        // style[':hover']=
+        // {
+        //   backgroundColor: 'purple',
+        //   color: 'black'
+        // }
         }
+        const classes= [];
+        if(this.state.persons.length <= 2)
+        {
+                classes.push('red')
+        } 
+        if(this.state.persons.length <= 1)
+        {
+                classes.push('bold')
+        } 
+        if(this.state.persons.length < 1)
+        {
+                classes.push('green')
+        } 
         // <div>
         // <Person name={this.state.persons[0].name} age= {this.state.persons[0].age} />
         // <Person name={this.state.persons[1].name} age= {this.state.persons[1].age} 
@@ -119,31 +143,33 @@ deletePerson=(personIndex)=>
     //   )
     // }
     return(
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        {/* <Person name="neelam" age= "24" />
-        <Person name="sandeep" age= "23" >my Hobbie: playing Guitar</Person>
-        <Person name="prashansa" age= "20" /> */}
-        <button style= {style}  onClick={this.toogelHandler}>Switch Name</button>
-        {/* <button style= {style} onClick={this.switchNameHandler.bind('this', 'Sandeep Chand')}>Switch Name</button>
-        */}
-        {/* <button onClick={()=> this.switchNameHandler('Sandeep Chand')}>Switch Name</button> */}
-        {/* {
-          this.state.showPersons === true ?
-          <div>
-            <Person name={this.state.persons[0].name} age= {this.state.persons[0].age} />
-            <Person name={this.state.persons[1].name} age= {this.state.persons[1].age} 
-            click= {this.switchNameHandler.bind(this, 'Sandeep')}
-            changed= {this.nameChangedHandler} >my Hobbie: playing Guitar</Person>
-            <Person name={this.state.persons[2].name} age= {this.state.persons[2].age} />
-        </div> : null
+    
+          <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className= {classes.join(' ')}>This is really working!</p>
+          {/* <Person name="neelam" age= "24" />
+          <Person name="sandeep" age= "23" >my Hobbie: playing Guitar</Person>
+          <Person name="prashansa" age= "20" /> */}
+          <button style= {style}  onClick={this.toogelHandler}>Switch Name</button>
+          {/* <button style= {style} onClick={this.switchNameHandler.bind('this', 'Sandeep Chand')}>Switch Name</button>
+          */}
+          {/* <button onClick={()=> this.switchNameHandler('Sandeep Chand')}>Switch Name</button> */}
+          {/* {
+            this.state.showPersons === true ?
+            <div>
+              <Person name={this.state.persons[0].name} age= {this.state.persons[0].age} />
+              <Person name={this.state.persons[1].name} age= {this.state.persons[1].age} 
+              click= {this.switchNameHandler.bind(this, 'Sandeep')}
+              changed= {this.nameChangedHandler} >my Hobbie: playing Guitar</Person>
+              <Person name={this.state.persons[2].name} age= {this.state.persons[2].age} />
+          </div> : null
 
-        } */}
-        {persons}
-        
+          } */}
+          {persons}
+          
 
-      </div>
+        </div>
+     
     )
   }
 }
